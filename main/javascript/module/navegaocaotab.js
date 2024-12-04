@@ -1,6 +1,6 @@
 // NAVEGACÃO POR TABS
 export default class ativaNavegacao {
-  // ISOLANDO O CODIGO NO ESCOPO DA FUNCITION
+
     constructor (menu,content) {
       this.tabMenu = document.querySelectorAll(menu);
       this.tabContent = document.querySelectorAll(content)
@@ -31,4 +31,4 @@ export default class ativaNavegacao {
         this.addTabEvent()
       }
     }
- }
+

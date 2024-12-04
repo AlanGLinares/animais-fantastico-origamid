@@ -16,6 +16,8 @@ import initFetchAnimais from './module/fetch.animais.js'
 const accordion = new Accordion("[data-anime-accordion] dt")
 accordion.init()
 
+
+
 const tabNav = new TabNav("[data-tab] li" ,  "[data-tab] section")
 tabNav.init()
 
