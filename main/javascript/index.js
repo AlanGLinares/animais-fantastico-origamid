@@ -1,6 +1,6 @@
 import InitScrollSmooth from './module/scrollsuave.js'
 import InitanimationScroll from './module/animation.scroll.js'
-import InitAccordion from './module/accordion-list.js'
+import Accordion from './module/accordion-list.js'
 import ativaNavegacao from './module/navegaocaotab.js'
 import initModal from './module/modal.js'
 import initTooltip from './module/tooltip.js'
@@ -13,10 +13,12 @@ import initFetchAnimais from './module/fetch.animais.js'
 // testando()
 // testando123()
 
+const accordion = new Accordion("[data-anime-accordion] dt")
+accordion.init()
+
 ativaNavegacao()
 InitScrollSmooth()
 InitanimationScroll()
-InitAccordion()
 initModal()
 initTooltip()
 initDropdownMenu()
