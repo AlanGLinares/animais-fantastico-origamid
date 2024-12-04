@@ -1,7 +1,7 @@
 import InitScrollSmooth from './module/scrollsuave.js'
 import InitanimationScroll from './module/animation.scroll.js'
 import Accordion from './module/accordion-list.js'
-import ativaNavegacao from './module/navegaocaotab.js'
+import TabNav from './module/navegaocaotab.js'
 import initModal from './module/modal.js'
 import initTooltip from './module/tooltip.js'
 import initDropdownMenu  from './module/dropdown-menu.js'
@@ -16,7 +16,10 @@ import initFetchAnimais from './module/fetch.animais.js'
 const accordion = new Accordion("[data-anime-accordion] dt")
 accordion.init()
 
-ativaNavegacao()
+const tabNav = new TabNav ("[data-tab] li" , "[data-tab] section")
+
+tabNav.init()
+
 InitScrollSmooth()
 InitanimationScroll()
 initModal()
