@@ -39,6 +39,8 @@ export default class Modal {
     if (this.botaoAbrir && this.botaoFechar && this.containerModal) {
       this.addEventModal()
     }
+    // colocar o return this para poder linkar os métodos se não vai da undefined
+    return this
   }
 }
 

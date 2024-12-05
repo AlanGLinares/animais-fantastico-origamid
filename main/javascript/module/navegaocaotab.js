@@ -30,4 +30,6 @@ export default class ativaNavegacao {
         this.tabContent[0].classList.add(this.classActive)
         this.addTabEvent()
       }
+      // colocar o return this para poder linkar os métodos se não vai da undefined
+      return this;
     }
