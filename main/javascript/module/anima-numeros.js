@@ -4,6 +4,7 @@ export default class AnimaNumeros {
     this.observeTarget = document.querySelector(observeTarget);
     this.observerClass = observerClass;
 
+    // bind o this do objeto ao call da mutação
     this.handleMutation = this.handleMutation.bind(this)
   }
 
