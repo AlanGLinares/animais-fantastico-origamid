@@ -31,6 +31,7 @@ export default class AnimaNumeros {
     })
   }
 
+
   handleMutation(mutation) {
     if (mutation[0].target.classList.contains(this.observerClass)) {
       this.observer.disconnect();
@@ -38,6 +39,8 @@ export default class AnimaNumeros {
     }
   }
 
+
+  // quando a classe ativarS é ativado ao animar o scroll , vai observar se caso for true vai ativar a função handleMutation() , e assim ativar a função animaNumeros()
   addMutationObserver() {
     this.observer = new MutationObserver (this.handleMutation);
     this.observer.observe(this.observeTarget, { attributes: true });
