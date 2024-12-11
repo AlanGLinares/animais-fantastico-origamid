@@ -7,40 +7,37 @@ export default class Modal {
 
 
     // com bind voce força o objeto fazer referencia a ele mesmo no método.
-    this.botaoAbrir = this.botaoAbrir.bind(this)
-    this.botaoFechar = this.botaoFechar.bind(this)
-    this.containerModal = this.containerModal.bind(this)
+    this.eventToggleModal = this.eventToggleModal.bind(this)
+    this.cliqueForaModal = this.cliqueForaModal.bind(this)
   }
 
-  abrirModal(event) {
-    event.preventDefault();
-    this.containerModal.classList.add(this.classActive);
+  ToggleModal () {
+    this.containerModal.classList.toggle(this.classActive);
   }
 
-  fecharModal(event) {
-    event.preventDefault();
-    this.containerModal.classList.remove(this.classActive);
+  eventToggleModal (event) {
+    event.preventDefault()
+    this.ToggleModal()
   }
 
-  cliqueForaModal(event) {
+  cliqueForaModal (event) {
     if (event.target === this.containerModal) {
-      this.fecharModal(event);
+      this.ToggleModal(event);
     }
   }
 
-  addEventModal () {
-    this.botaoAbrir.addEventListener("click", this.abrirModal);
-    this.botaoFechar.addEventListener("click", this.fecharModal);
+  addEventModal() {
+    this.botaoAbrir.addEventListener("click", this.eventToggleModal);
+    this.botaoFechar.addEventListener("click", this.eventToggleModal);
     this.containerModal.addEventListener("click", this.cliqueForaModal);
   }
 
-
-  init () {
+  init() {
     if (this.botaoAbrir && this.botaoFechar && this.containerModal) {
-      this.addEventModal()
+      this.addEventModal();
     }
     // colocar o return this para poder linkar os métodos se não vai da undefined
-    return this
+    return this;
   }
 }
 
