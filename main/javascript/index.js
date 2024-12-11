@@ -7,7 +7,7 @@ import Tooltip from './module/tooltip.js'
 import initDropdownMenu  from './module/dropdown-menu.js'
 import initMenuMoblie from './module/menu-moblie.js'
 import initFuncionamento from './module/funcionamento.js'
-import initFetchAnimais from './module/fetch.animais.js'
+import initfetchAnimais from  './module/fetch.animais.js'
 
 // import {testando , testando123} from './module/teste.js'
 // testando()
@@ -24,14 +24,15 @@ const modal = new Modal ('[data-modal="abrir"]','[data-modal="fechar"]','[data-m
 modal.init()
 
 
-
 const tooltip = new Tooltip ("[data-tooltip]")
 tooltip.init()
 
 
+
+
+initfetchAnimais()
 InitScrollSmooth()
 InitanimationScroll()
 initDropdownMenu()
 initMenuMoblie()
 initFuncionamento()
-initFetchAnimais()

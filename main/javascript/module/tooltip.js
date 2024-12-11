@@ -8,8 +8,8 @@ export default class Tooltip {
   }
 
   // criar tooltipbox e adiciona os evento de MouseMove e MouseLeave ao target
-  onMouseOver(event) {
-    const currentTarget = (event.currentTarget);
+  onMouseOver({currentTarget}) {
+    this.criarTooltipBox(currentTarget)
     currentTarget.addEventListener("mousemove", this.onMouseMove);
     currentTarget.addEventListener("mouseleave", this.onMouseLeave);
   }
@@ -23,7 +23,8 @@ export default class Tooltip {
  
   // muda a tooltip conforme a posição
   onMouseMove(e) {
-    if ((e.pageX + 240, window.innerWidth)) {
+    this.tooltipBox.style.top = `${e.pageY + 20}px`
+    if ((e.pageX + 240 > window.innerWidth)) {
       this.tooltipBox.style.left = `${e.pageX - 190}px`;
     } else {
       this.tooltipBox.style.left = `${e.pageX + 20}px`;

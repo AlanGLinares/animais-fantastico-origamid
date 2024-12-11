@@ -33,3 +33,4 @@ export default class ativaNavegacao {
       // colocar o return this para poder linkar os métodos se não vai da undefined
       return this;
     }
+  }
