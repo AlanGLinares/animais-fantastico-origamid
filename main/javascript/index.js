@@ -4,7 +4,7 @@ import Accordion from './module/accordion-list.js'
 import TabNav from './module/navegaocaotab.js'
 import Modal from './module/modal.js'
 import Tooltip from './module/tooltip.js'
-import initDropdownMenu  from './module/dropdown-menu.js'
+import DropdownMenu  from './module/dropdown-menu.js'
 import initMenuMoblie from './module/menu-moblie.js'
 import initFuncionamento from './module/funcionamento.js'
 import initfetchAnimais from  './module/fetch.animais.js'
@@ -30,8 +30,10 @@ tooltip.init()
 const animascroll = new ScrollAnima ("[data-anime='scroll']")
 animascroll.init()
 
+const dropmenu = new DropdownMenu ('[data-dropdown=""]')
+dropmenu.init()
+
 initfetchAnimais()
 InitScrollSmooth()
-initDropdownMenu()
 initMenuMoblie()
 initFuncionamento()
