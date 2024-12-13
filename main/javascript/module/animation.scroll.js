@@ -1,10 +1,15 @@
+import DebounceScroll from "./debounce.js"
+
+
+
+
 // ANIMACAO DE SCROLL
 export default class ScrollAnima {
   constructor(sections) {
     this.sections = document.querySelectorAll(sections);
     this.windowMetade = window.innerHeight * 0.4;
 
-    this.checkDistance = this.checkDistance.bind(this)
+    this.checkDistance = DebounceScroll(this.checkDistance.bind(this), 50)
   }
 
   // o [...this.sections] é uma nodelist que está sendo destrurado pelo o spread e se transformando numa array e utilizando o método map 
@@ -29,7 +34,7 @@ export default class ScrollAnima {
     })
   }
 
-  // mesma função do codigo acima , porem o getBoundingClientRect ele faz mais checkagem a cada vez no DOM e o checkDistance verifica o pageYOffSet somente
+  // mesma função do codigo acima , porem o getBoundingClientRect ele faz mais checkagem a cada vez no DOM e o checkDistance verifica o pageYOffSet somente.
   // animaScroll() {
   //   this.sections.forEach((section) => {
   //     const sectionTop = section.getBoundingClientRect().top;
