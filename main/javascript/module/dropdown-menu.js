@@ -1,55 +1,48 @@
-import outsideClick from './outsideclick.js'
+import outsideClick from "./outsideclick.js";
 
+export default class DropdownMenu {
+  constructor(datadrop, events) {
+    this.dropdownMenu = document.querySelectorAll(datadrop);
 
+    // define o touchstart e click como argumento padrão de events
+    if (events === undefined) {
+      this.events = ["touchstart", "click"];
+    } else {
+      this.events = events;
+    }
 
+    this.activeClass = "active";
+    this.activeDropDown = this.activeDropDown.bind(this);
+  }
 
-
-export default function initDropdownMenu() {
-  const dropdownMenu = document.querySelectorAll('[data-dropdown=""]');
-
-  dropdownMenu.forEach((menu) => {
-    // menu.addEventListener('touchstart', handleClick)
-    // menu.addEventListener('click', handleClick)
-  
-    ["touchstart", "click"].forEach((userEvent) => {
-      menu.addEventListener(userEvent, handleClick);
-    });
-  });
-  
-  function handleClick(event) {
+  // ativa o dropmenu e ativa a função outsideClick que observa o click fora dele.
+  activeDropDown(event) {
+    const eventTarget = event.currentTarget;
     event.preventDefault();
-    this.classList.add("active");
-    outsideClick(this, ["touchstart", "click"], () => {
-      this.classList.remove("active");
+    eventTarget.classList.add(this.activeClass);
+    outsideClick(eventTarget, this.events, () => {
+      eventTarget.classList.remove(this.activeClass);
     });
   }
-  
-  
-  
-  function outsideClick(element, events, callback) {
-    const html = document.documentElement;
-    const dataoutisde = "data-outside";
-  
-    if (!element.hasAttribute(dataoutisde)) {
-      events.forEach((userEvent) => {
-        html.addEventListener(userEvent, handleOutsideClick);
+
+  // adiciona os eventos ao dropdownmenu
+  addDropdownMenusEvent() {
+    this.dropdownMenu.forEach((menu) => {
+      // menu.addEventListener('touchstart', handleClick)
+      // menu.addEventListener('click', handleClick)
+      this.events.forEach((userEvent) => {
+        menu.addEventListener(userEvent, this.activeDropDown);
       });
-      element.setAttribute(dataoutisde, "");
-    }
-  
-    function handleOutsideClick(event) {
-      if (!element.contains(event.target)) {
-        element.removeAttribute(dataoutisde);
-        events.forEach((userEvent) => {
-          html.removeEventListener(userEvent, handleOutsideClick);
-        });
-        callback();
-      }
-    }
+    });
   }
 
+
+  init() {
+    if (this.dropdownMenu.length) {
+      this.addDropdownMenusEvent();
+    }
+    return this;
+  }
 }
-
-
 
 //
