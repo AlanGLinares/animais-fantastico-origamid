@@ -1,26 +1,44 @@
-export default function initFuncionamento() {
+export default class Funcionamento {
+  constructor (funcionamento, activeClasse) {
+  this.funcionamento = document.querySelector (funcionamento)
+  this.activeClasse = activeClasse
 
-  const funcionamento = document.querySelector ('[data-semana]')
-  const diasSemanas = funcionamento.dataset.semana.split(',').map(Number)
-  const horarioSemana = funcionamento.dataset.horario.split(',').map(Number)
+  }
+
+  dadosFuncionamento () {
+   this.diasSemanas = this.funcionamento.dataset.semana.split(',').map(Number)
+   this.horarioSemana = this.funcionamento.dataset.horario.split(',').map(Number)
+  }
   
   
+  dadosAgora () {
+  this.dataAgora = new Date() // seleciona opçao de trabalhar com data
   
+  this.diaAgora = this.dataAgora.getDay() // seleciona a dia da semana seg , terça , quart , 
+  this.horarioAgora = this.dataAgora.getHours() // horario atual do computador
+  }
   
-  const dataAgora = new Date() // seleciona opçao de trabalhar com data
-  
-  const diaAgora = dataAgora.getDay() // seleciona a dia da semana seg , terça , quart , 
-  const horarioAgora = dataAgora.getHours() // horario atual do computador
-  
-  
-  const semanaAberto = diasSemanas.indexOf(diaAgora) !== -1;
-  const horarioAberto = (horarioAgora >= horarioSemana[0] && horarioAgora < horarioSemana[1]); // operador ternario 
-    
-  
-  if (semanaAberto && horarioAberto ) {
-    funcionamento.classList.add('aberto')
-  } 
-  
+  estaAberto () {
+  this.semanaAberto = this.diasSemanas.indexOf(this.diaAgora) !== -1;
+  this.horarioAberto = (this.horarioAgora >= this.horarioSemana[0] && this.horarioAgora < this.horarioSemana[1]); // operador ternario 
+
+    return this.semanaAberto && this.horarioAberto
+  }
+
+  ativaAberto () {
+    if (this.estaAberto()) {
+    this.funcionamento.classList.add(this.activeClasse)
+    }
+  }
+
+  init () {
+    if (this.funcionamento) {
+      this.dadosFuncionamento()
+      this.dadosAgora()
+      this.ativaAberto()
+    }
+    return this
+  }
 }
 
 

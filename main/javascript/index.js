@@ -6,7 +6,7 @@ import Modal from './module/modal.js'
 import Tooltip from './module/tooltip.js'
 import DropdownMenu  from './module/dropdown-menu.js'
 import MenuMoblie from './module/menu-moblie.js'
-import initFuncionamento from './module/funcionamento.js'
+import Funcionamento from './module/funcionamento.js'
 import initfetchAnimais from  './module/fetch.animais.js'
 
 // import {testando , testando123} from './module/teste.js'
@@ -36,7 +36,8 @@ dropmenu.init()
 const menumoblie = new MenuMoblie ('[data-menu="button"]','[data-menu="list"]')
 menumoblie.init()
 
+const funcionamento = new Funcionamento ('[data-semana]', "aberto") 
+funcionamento.init()
 
 initfetchAnimais()
 InitScrollSmooth()
-initFuncionamento()
